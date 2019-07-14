@@ -1,6 +1,8 @@
 Front End Gulp Boilerplate
 ==========================
 
+demo - https://evgen904.github.io/
+
 Front-end boilerplate for Gulp with everything you need to get started.
 
 * First download or clone this repo :)
