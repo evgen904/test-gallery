@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Website Title</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+    <body>
+    
+    <div class="gallery">
+        <div class="description">
+            <h1>Галерея по типу Google Photos</h1>
+            <h2>Пример JSON-a в нужном формате:</h2>
+            <pre>
+            {
+                "galleryImages" : [
+                    {
+                        "url": "https://don16obqbay2c.cloudfront.net/frontend-test-task/images/493550746.jpg"
+                    },
+                    {
+                        "url": "https://don16obqbay2c.cloudfront.net/frontend-test-task/images/448964007.jpg"
+                    },
+                    {
+                        "url": "https://don16obqbay2c.cloudfront.net/frontend-test-task/images/493550739.jpg"
+                    }
+                ]
+            }</pre>
+            <div class="link-example">
+                <strong>Пример ссылки:</strong>
+                <span title="Кликните чтобы сохранить ссылку в буфер обмена." class="js-write-text">https://don16obqbay2c.cloudfront.net/frontend-test-task/gallery-images.json</span>
+            </div>
+        </div>
+        <div class="loader">
+            <div class="loader-fields">
+                <input type="text" value="" placeholder="Укажите путь до json файла" class="js-url-loader">
+                <button type="button" class="js-btn-loader">Загрузить</button>
+            </div>
+            <div class="loader-hint hidden js-hint-loader"></div>
+        </div>
+        <div class="images js-images hidden">
+            <div class="m-p-g">
+                <div class="m-p-g__thumbs js-add-images" data-google-image-layout data-max-height="180"></div>
+                <div class="m-p-g__fullscreen"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+    </body>
+</html>
