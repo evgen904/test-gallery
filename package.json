@@ -4,9 +4,15 @@
   "description": "Description of your project",
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.18.7",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^7.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^3.1.1",
     "gulp-minify-css": "^1.2.4",
@@ -15,7 +21,9 @@
     "gulp-sequence": "^0.4.6",
     "gulp-shell": "^0.5.2",
     "gulp-sourcemaps": "^2.4.1",
+    "gulp-terser": "^1.2.0",
     "gulp-uglify": "^2.0.1",
+    "gulp-uglify-es": "^1.0.4",
     "gulp-util": "^3.0.8"
   }
 }
