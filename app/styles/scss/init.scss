@@ -81,16 +81,7 @@
 		}
 	} 
 	.images {
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: row;
-		align-items: flex-start;
-		justify-content: flex-start;
-		padding: 4px 4px;
-		&-img {
-			width: 20%;
-			padding: 4px;
-		}
+		padding: 4px;
 	}
 }
 
