@@ -21,12 +21,41 @@ $(function(){
                         let data = await fetch(url).then((data) => data.json());
 
                         if (data.galleryImages.length) {
-                            $('.js-images').removeClass('hidden');
+                            $('.js-add-images').removeClass('hidden');
                             for (let i = 0; data.galleryImages.length > i; i++) {
-                                $('.js-add-images').append(`<img src="${data.galleryImages[i].url}" data-full="${data.galleryImages[i].url}" class="m-p-g__thumbs-img" />`);
+                                $('.js-add-images').append(`
+                                    <img 
+                                        data-height="${data.galleryImages[i].height}" 
+                                        data-width="${data.galleryImages[i].width}" 
+                                        src="${data.galleryImages[i].url}" />
+                                `);
                             }
-                            let elem = document.querySelector('.m-p-g');
-                            let gallery = new MaterialPhotoGallery(elem);
+
+                            $('.js-add-images img').each(function(i) {
+                                var src = $(this).attr('src'),
+                                    h = parseInt($(this).data('height')),
+                                    w = parseInt($(this).data('width')),
+                                    flexGrow = (w * 100) / h,
+                                    flexBasis = (w * 160) / h,
+                                    paddingBottom = (h / w) * 100;
+                                $(this)
+                                    .css({
+                                        'opacity': 0
+                                    })
+                                    .wrap('<figure>')
+                                    .before('<div>');
+
+                                var figure = $(this).parent('figure');
+
+                                figure.css({
+                                    'flex-grow': flexGrow,
+                                    'flex-basis': flexBasis + 'px',
+                                    'background-image': 'url(' + src + ')'
+                                }).find('> div').css({
+                                    'padding-bottom': paddingBottom + '%'
+                                });
+                            });
+
                         }
 
                     })();
@@ -58,3 +87,5 @@ $(function(){
 
 
 });
+
+
