@@ -19,13 +19,19 @@
             {
                 "galleryImages" : [
                     {
-                        "url": "https://don16obqbay2c.cloudfront.net/frontend-test-task/images/493550746.jpg"
+                        "url": "https://don16obqbay2c.cloudfront.net/frontend-test-task/images/493550746.jpg",
+                        "width": 640,
+                        "height": 426
                     },
                     {
-                        "url": "https://don16obqbay2c.cloudfront.net/frontend-test-task/images/448964007.jpg"
+                        "url": "https://don16obqbay2c.cloudfront.net/frontend-test-task/images/448964007.jpg",
+                        "width": 1920,
+                        "height": 1200
                     },
                     {
-                        "url": "https://don16obqbay2c.cloudfront.net/frontend-test-task/images/493550739.jpg"
+                        "url": "https://don16obqbay2c.cloudfront.net/frontend-test-task/images/493550739.jpg",
+                        "width": 640,
+                        "height": 426
                     }
                 ]
             }</pre>
@@ -36,17 +42,12 @@
         </div>
         <div class="loader">
             <div class="loader-fields">
-                <input type="text" value="" placeholder="Укажите путь до json файла" class="js-url-loader">
+                <input type="text" value="https://don16obqbay2c.cloudfront.net/frontend-test-task/gallery-images.json" placeholder="Укажите путь до json файла" class="js-url-loader">
                 <button type="button" class="js-btn-loader">Загрузить</button>
             </div>
             <div class="loader-hint hidden js-hint-loader"></div>
         </div>
-        <div class="images js-images hidden">
-            <div class="m-p-g">
-                <div class="m-p-g__thumbs js-add-images" data-google-image-layout data-max-height="180"></div>
-                <div class="m-p-g__fullscreen"></div>
-            </div>
-        </div>
+        <div class="images js-add-images"></div>
     </div>
 
     <script src="scripts/app.js"></script>
