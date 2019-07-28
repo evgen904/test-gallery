@@ -2319,6 +2319,8 @@ $(function () {
                         if (data.galleryImages.length) {
                             $('.js-add-images').removeClass('hidden');
                             for (var i = 0; data.galleryImages.length > i; i++) {
+
+                                $('.js-slider-zoom').append("<div><img src=\"" + data.galleryImages[i].url + "\"></div>");
                                 $('.js-add-images').append("\n                                    <img \n                                        data-height=\"" + data.galleryImages[i].height + "\" \n                                        data-width=\"" + data.galleryImages[i].width + "\" \n                                        src=\"" + data.galleryImages[i].url + "\" />\n                                ");
                             }
 
@@ -2337,10 +2339,10 @@ $(function () {
 
                                 figure.css({
                                     'flex-grow': flexGrow,
-                                    'flex-basis': flexBasis + 'px',
-                                    'background-image': 'url(' + src + ')'
+                                    'flex-basis': flexBasis + 'px'
                                 }).find('> div').css({
-                                    'padding-bottom': paddingBottom + '%'
+                                    'padding-bottom': paddingBottom + '%',
+                                    'background-image': 'url(' + src + ')'
                                 });
                             });
                         }
@@ -2367,5 +2369,57 @@ $(function () {
         }).catch(function (err) {
             console.log('Что-то пошло не так', err);
         });
+    });
+
+    /* Увеличение картинки */
+
+    function slider(selector, nav) {
+        var widthSlide = $(selector).parent().width() // Ширина видимой области для слайда
+        ,
+            lengthImages = $(selector).find('> div').length // Кол-во картинок
+        ,
+            activeEl = $(selector).attr('data-active') // Выбранный слайд
+        ,
+            animationTime = nav == 'next' || nav == 'prev' ? '0.5' : '0'; // Когда применять анимацию
+
+        if (nav == 'next') {
+            activeEl >= lengthImages - 1 ? activeEl = activeEl : activeEl++;
+        } else if (nav == 'prev') {
+            activeEl == 0 ? activeEl = 0 : activeEl--;
+        }
+        $(selector).attr('data-active', activeEl).css({
+            'width': widthSlide * lengthImages,
+            'transform': 'translate3d(-' + widthSlide * activeEl + 'px, 0px, 0px)',
+            'transition': 'all ' + animationTime + 's ease'
+        }).find('> div').css({ 'width': widthSlide });
+    };
+
+    $(document).on('click', '.js-add-images figure', function () {
+        $('.js-slider-zoom').attr('data-active', $(this).index());
+        $('.js-slider').removeClass('hidden');
+        setTimeout(function () {
+            $('.js-slider > div').css({ 'opacity': '1' });
+        }, 100);
+        $('.gallery').addClass('gallery_blur');
+        slider('.js-slider-zoom');
+    });
+    $(document).on('click', '.js-slider-close', function () {
+        $('.js-slider > div').css({ 'opacity': '0' });
+        setTimeout(function () {
+            $('.js-slider').addClass('hidden');
+            $('.js-slider-zoom').removeAttr('style');
+            $('.gallery').removeClass('gallery_blur');
+        }, 500);
+    });
+
+    $(document).on('click', '.js-slider-prev', function () {
+        slider('.js-slider-zoom', 'prev');
+    });
+    $(document).on('click', '.js-slider-next', function () {
+        slider('.js-slider-zoom', 'next');
+    });
+
+    $(window).resize(function () {
+        slider('.js-slider-zoom');
     });
 });
